@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header class="container">
+        <nav>
+          <a aria-label="Shortly" href="/">
+            <img src="images/logo.svg" alt="logo" />
+          </a>
+          <svg class="icon icon--gray nav--toggler">
+            <use xlink:href="images/sprite.svg#menu"></use>
+          </svg>
+          <ul class="list nav__list collapsible__content">
+            <li class="nav--section">
+              <ul class="list">
+                <li class="nav__item"><a href="#">Features</a></li>
+                <li class="nav__item"><a href="#">Pricing</a></li>
+                <li class="nav__item"><a href="#">Resources</a></li>
+              </ul>
+            </li>
+            <li class="nav--section">
+              <ul class="list">
+                <li class="nav__item login"><a href="#">Login</a></li>
+                <li class="btn btn--oval btn--primary nav__item nav__item--cta">
+                  <a href="#">Sign Up</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section class="block hero">
+        <div class="container grid grid-cols-2">
+          <img src="images/illustration-working.svg" alt="" class="hero__img" />
+          <div class="block__header hero__content">
+            <h1 class="block__heading">More than just shorter links</h1>
+            <p class="hero__paragraph">
+              Build your brand's recognition and get detailed insights on how
+              your links are performing.
+            </p>
+            <a href="#" class="btn btn--oval btn--primary hero__btn"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </section>
+      <div class="grey-background">
+        <section class="block block-shorten container">
+          <input
+            type="text"
+            name="url"
+            id="url"
+            placeholder="Shorten a link here..."
+            onblur="blurHandler()"
+          /><span class="input-error"></span>
+          <button class="btn btn--rect btn--primary btn--lg">
+            Shorten It!
+          </button>
+        </section>
+        <section class="block block-history container">
+        </section>
+        <section class="block block-features container">
+          <header class="block__header">
+            <h2>Advanced Statistics</h2>
+            <p>
+              Trace how your link are performing across the web with out
+              advanced statistics dashboard
+            </p>
+          </header>
+          <div class="features">
+            <div class="feature">
+              <div class="img">
+                <svg class="icon">
+                  <use
+                    xlink:href="images/sprite.svg#icon-brand-recognition"
+                  ></use>
+                </svg>
+              </div>
+              <h3 class="heading">Brand Recognition</h3>
+              <p class="content">
+                Boost your brand recognition with each click. Generic links
+                don't mean a thing. Branded links help instil confidence in your
+                content.
+              </p>
+            </div>
+            <div class="feature">
+              <div class="img">
+                <svg class="icon">
+                  <use
+                    xlink:href="images/sprite.svg#icon-detailed-records"
+                  ></use>
+                </svg>
+              </div>
+              <h3 class="heading">Detailed Records</h3>
+              <p class="content">
+                Gain insights into who is clicking your links. Knowing when and
+                where people engage with your content helps inform better
+                decisions.
+              </p>
+            </div>
+            <div class="feature">
+              <div class="img">
+                <svg class="icon">
+                  <use
+                    xlink:href="images/sprite.svg#icon-fully-customizable"
+                  ></use>
+                </svg>
+              </div>
+              <h3 class="heading">Fully Customizable</h3>
+              <p class="content">
+                Improve brand awareness and content discoverability through
+                customizable links, supercharging audience engagement.
+              </p>
+            </div>
+            <div class="vl"></div>
+          </div>
+        </section>
+      </div>
+      <div class="callout">
+        <h2>Boost your links today</h2>
+        <button class="btn btn--oval btn--primary">Get Started</button>
+      </div>
+      <footer class="block footer">
+        <div class="container footer__contents">
+          <h2>Shortly</h2>
+          <div class="footer-section">
+            <h3 class="header">Features</h3>
+            <ul class="list">
+              <li><a href="#">Link Shortening</a></li>
+              <li><a href="#">Branded Links</a></li>
+              <li><a href="#">Analytics</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="header">Resources</h3>
+            <ul class="list">
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Developers</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="header">Company</h3>
+            <ul class="list">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="social">
+            <a href="#">
+              <svg class="icon icon--white icon-small">
+                <use xlink:href="images/sprite.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a href="#">
+              <svg class="icon icon--white icon-small">
+                <use xlink:href="images/sprite.svg#icon-twitter"></use>
+              </svg>
+            </a>
+            <a href="#">
+              <svg class="icon icon--white icon-small">
+                <use xlink:href="images/sprite.svg#icon-pinterest"></use>
+              </svg>
+            </a>
+            <a href="#">
+              <svg class="icon icon--white icon-small">
+                <use xlink:href="images/sprite.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+  <script src="main.js"></script>
+</html>
