@@ -1,5 +1,5 @@
 let nav__toggler = document.querySelector(".nav--toggler");
-const api = "http://api.ary0n.fun/";
+const api = "https://api.ary0n.fun/";
 const subBtn = document.querySelector(".btn--lg");
 const input = document.querySelector("#url");
 const nav_items = document.querySelectorAll(".nav__item");
