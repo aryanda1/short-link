@@ -103,10 +103,10 @@ h3 {
   transition: all 0.3s;
 }
 
-.nav__item > a:hover{
+.nav__item > a:hover {
   color: var(--neutral-grayish-violet);
 }
-.nav__item--cta:hover > a{
+.nav__item--cta:hover > a {
   color: hsl(0, 0%, 95%);
 }
 
@@ -216,8 +216,8 @@ h3 {
   color: var(--primary-dark-violet);
 }
 
-.input-error::after{
-  content: '';
+.input-error::after {
+  content: "";
   position: absolute;
   top: 8.2rem;
   left: 2rem;
@@ -225,13 +225,15 @@ h3 {
   font-size: 1.2rem;
   font-style: italic;
 }
-.input-error.empty::after{
-  content: 'Please add a link';
+.input-error.empty::after {
+  content: "Please add a link";
 }
-.input-error.invalid::after{
-  content: 'Please add a valid link';
+.input-error.invalid::after {
+  content: "Please add a valid link";
 }
-
+.input-error.error::after {
+  content: "Something went wrong, please try again";
+}
 
 .block-shorten #url.error {
   border: 2px solid var(--secondary-red);
@@ -244,6 +246,33 @@ h3 {
 .error {
   color: var(--secondary-red);
   font-size: 1.2rem;
+}
+
+.label-up {
+  display: block;
+  margin: 0px 30px;
+  height: 100%;
+  position: relative;
+  top: 0%;
+  transition: 0.3s;
+}
+.btn--lg {
+  overflow: hidden;
+  height: 5rem;
+  line-height: 5rem;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  border-radius: 2px;
+  transition: 0.3s;
+  padding: 0;
+}
+.btn--lg.move-label-up .label-up {
+  top: -100%;
+}
+.btn--lg:disabled {
+  background-color: #bfbfbf;
+  cursor: not-allowed;
 }
 
 .grey-background {
@@ -295,7 +324,6 @@ h3 {
   color: var(--primary-cyan);
   overflow: auto;
 }
-
 
 .btn--copy.copied {
   background-color: var(--primary-dark-violet);
@@ -438,7 +466,7 @@ h3 {
   transition: all 0.3s;
 }
 
-.footer-section li a:hover{
+.footer-section li a:hover {
   color: var(--primary-cyan);
 }
 
@@ -463,19 +491,19 @@ h3 {
   height: 25px;
 }
 
-.icon--white{
+.icon--white {
   fill: white;
 }
 
-.social .icon:hover{
+.social .icon:hover {
   fill: var(--primary-cyan);
 }
 
 @media screen and (min-width: 768px) {
-  .container{
+  .container {
     max-width: 110rem;
   }
-  .btn{
+  .btn {
     align-self: normal;
   }
   nav {
@@ -511,13 +539,13 @@ h3 {
   .nav__item > a {
     color: var(--neutral-grayish-violet);
   }
-  .nav__item > a:hover{
+  .nav__item > a:hover {
     color: var(--neutral-dark-violet);
   }
-  .nav__item--cta{
+  .nav__item--cta {
     padding: 1rem 2rem;
   }
-  .nav__item--cta a{
+  .nav__item--cta a {
     color: #fff;
   }
 
@@ -525,7 +553,8 @@ h3 {
   .block__heading {
     font-size: 4.5rem;
   }
-  .hero__paragraph,.block-history .history{
+  .hero__paragraph,
+  .block-history .history {
     font-size: 1.8rem;
   }
   .grid-cols-2 {
@@ -533,35 +562,40 @@ h3 {
     align-items: center;
     gap: 7rem;
   }
-  .hero__img{
+  .hero__img {
     order: 1;
     margin: 0;
   }
-  .hero__content{
+  .hero__content {
     text-align: left;
   }
 
-  .grey-background{
+  .grey-background {
     padding-bottom: 16rem;
   }
 
   /* shorten */
-  .block-shorten{
+  .block-shorten {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-image: url('images/bg-shorten-desktop.svg');
+    background-image: url("images/bg-shorten-desktop.svg");
     padding: 2.5rem 3rem;
   }
-  .block-shorten #url{
+  .block-shorten #url {
     padding: 1.7rem 2.5rem;
     font-size: 1.8rem;
     position: relative;
   }
-  .input-error::after{
+  .input-error::after {
     left: 3rem;
   }
-    /* content: 'pleasd add a link';
+  
+.btn--lg{
+  height: 5.5rem;
+  line-height: 5.5rem;
+}
+  /* content: 'pleasd add a link';
     color: red;
     position: absolute; */
 
@@ -577,34 +611,36 @@ h3 {
     padding: 1.7rem;
   } */
   /* history */
-  .block-history .history{
+  .block-history .history {
     justify-content: space-between;
   }
-  .block-history .history,.block-history .actions{
+  .block-history .history,
+  .block-history .actions {
     align-items: center;
     flex-direction: row;
   }
-  .orig-link{
+  .orig-link {
     border: 0;
   }
 
   /* features */
-  .block-features h2,.callout h2 {
+  .block-features h2,
+  .callout h2 {
     font-size: 3rem;
   }
-  .block-features p{
+  .block-features p {
     font-size: 1.8rem;
     max-width: 53rem;
   }
 
-  .features{
+  .features {
     max-width: 110rem;
     flex-direction: row;
     height: fit-content;
     margin: 5rem auto;
     gap: 2.5rem;
   }
-  .feature{
+  .feature {
     padding: 0 2rem;
     text-align: left;
   }
@@ -629,52 +665,52 @@ h3 {
     transform: translateY(90px);
     /* margin-bottom: 4rem; */
   }
-  .feature .img{
+  .feature .img {
     margin: 0;
   }
-  .feature .content{
+  .feature .content {
     padding: 0;
   }
-  .feature .heading{
+  .feature .heading {
     font-size: 2rem;
   }
-  .btn--copy{
+  .btn--copy {
     display: flex;
     width: 10rem;
     align-items: center;
     justify-content: center;
   }
 
-  .callout{
-    background-image: url('images/bg-boost-desktop.svg');
+  .callout {
+    background-image: url("images/bg-boost-desktop.svg");
     background-position: left;
     padding: 6rem 0;
   }
-/* footer */
-  .footer{
+  /* footer */
+  .footer {
     text-align: left;
     padding: 7rem 2rem;
   }
-  
-  .footer__contents{
+
+  .footer__contents {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
     gap: 4.5rem;
   }
 
-  .footer h2{
+  .footer h2 {
     flex: 1;
     margin-top: -1rem;
   }
 
-  .footer-section{
-    margin:0;
+  .footer-section {
+    margin: 0;
   }
-  .footer-section h3{
+  .footer-section h3 {
     margin-top: 0;
   }
-  .social{
+  .social {
     height: fit-content;
     flex: 1;
     margin-top: 0;
@@ -682,29 +718,28 @@ h3 {
   }
 }
 
-
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
   .block__heading {
     font-size: 6rem;
   }
-  .hero__paragraph{
+  .hero__paragraph {
     font-size: 2rem;
   }
-  .block-shorten{
+  .block-shorten {
     padding: 5rem 6rem;
   }
-  .block-features h2,.callout h2 {
+  .block-features h2,
+  .callout h2 {
     font-size: 3.5rem;
   }
-  .input-error::after{
+  .input-error::after {
     left: 6rem;
     top: 11rem;
   }
-  .feature{
+  .feature {
     padding: 0 3rem;
   }
-  .feature .heading{
+  .feature .heading {
     font-size: 2.5rem;
   }
-  
 }

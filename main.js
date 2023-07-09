@@ -3,6 +3,7 @@ const api = "https://api.ary0n.fun/";
 const subBtn = document.querySelector(".btn--lg");
 const input = document.querySelector("#url");
 const nav_items = document.querySelectorAll(".nav__item");
+const spanErr = document.querySelector('.input-error');
 
 let links = [];
 if (localStorage.getItem("links") != null)
@@ -21,16 +22,19 @@ function blurHandler() {
     document.querySelector(".input-error").classList.add("invalid");
     input.classList.add("error");
   } else {
-    document.querySelector(".input-error").classList.remove("empty", "invalid");
+    document.querySelector(".input-error").classList.remove("empty", "invalid",'error');
     input.classList.remove("error");
   }
 }
-
+console.log(subBtn);
 subBtn.addEventListener("click", async function () {
+  console.log("clicked");
   let url = input.value;
-  if (!url || !isValidURL(url)) return;
+  if (!url || !isValidURL(url)){blurHandler(); return;}
   url = ensureHTTPS(url);
   try {
+    this.classList.add("move-label-up");
+    this.disabled = true;
     let res = await fetch(`${api}url`, {
       method: "POST",
       headers: {
@@ -47,9 +51,21 @@ subBtn.addEventListener("click", async function () {
       links.push({ orig_link: url, short_link: shortUrl });
       updatelocalStorage();
       input.value = "";
+      document.querySelectorAll(".label-up")[1].innerHTML = "Done";
     }
   } catch (err) {
+    document.querySelectorAll(".label-up")[1].innerHTML = "Error";
+    
+    spanErr.classList.add('error');
     console.log(err);
+  } finally {
+    setTimeout(() => {
+      this.classList.remove("move-label-up");
+      setTimeout(() => {
+        document.querySelectorAll(".label-up")[1].innerHTML = "Submitted";
+      }, 300);
+    }, 1000);
+    this.disabled = false;
   }
 });
 
@@ -184,3 +200,15 @@ function isValidURL(url) {
 function updatelocalStorage() {
   localStorage.setItem("links", JSON.stringify(links));
 }
+
+// document.querySelector(".btn--lg").addEventListener("click", function () {
+//   this.classList.toggle("move-label-up");
+//   if (this.classList.contains("move-label-up"))
+//     setTimeout(() => {
+//       document.querySelectorAll(".label-up")[1].innerHTML = "Done";
+//     }, 1000);
+//   setTimeout(() => {
+//     this.classList.toggle("move-label-up");
+//     document.querySelectorAll(".label-up")[1].innerHTML = "Submitted";
+//   }, 2000);
+// });
