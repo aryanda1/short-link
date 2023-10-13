@@ -1,9 +1,23 @@
+const currentVersion = "v2";
+
+// Check if the user has visited the website before and stored a version
+const storedVersion = localStorage.getItem("appVersion");
+
+// If there's no stored version or it doesn't match the current version
+if (storedVersion !== currentVersion) {
+  // Clear local storage
+  localStorage.clear();
+
+  // Update the stored version to the current version
+  localStorage.setItem("appVersion", currentVersion);
+}
+
 let nav__toggler = document.querySelector(".nav--toggler");
 const api = "https://api.ary0n.fun/";
 const subBtn = document.querySelector(".btn--lg");
 const input = document.querySelector("#url");
 const nav_items = document.querySelectorAll(".nav__item");
-const spanErr = document.querySelector('.input-error');
+const spanErr = document.querySelector(".input-error");
 
 let links = [];
 if (localStorage.getItem("links") != null)
@@ -22,15 +36,18 @@ function blurHandler() {
     document.querySelector(".input-error").classList.add("invalid");
     input.classList.add("error");
   } else {
-    document.querySelector(".input-error").classList.remove("empty", "invalid",'error');
+    document
+      .querySelector(".input-error")
+      .classList.remove("empty", "invalid", "error");
     input.classList.remove("error");
   }
 }
-console.log(subBtn);
 subBtn.addEventListener("click", async function () {
-  console.log("clicked");
   let url = input.value;
-  if (!url || !isValidURL(url)){blurHandler(); return;}
+  if (!url || !isValidURL(url)) {
+    blurHandler();
+    return;
+  }
   url = ensureHTTPS(url);
   try {
     this.classList.add("move-label-up");
@@ -43,10 +60,8 @@ subBtn.addEventListener("click", async function () {
       body: JSON.stringify({ url }),
     });
     let data = await res.json();
-    console.log(data);
     if (data.id) {
       let shortUrl = api + data.id;
-      console.log(shortUrl);
       addSHortLinkContainer(url, shortUrl);
       links.push({ orig_link: url, short_link: shortUrl });
       updatelocalStorage();
@@ -55,8 +70,8 @@ subBtn.addEventListener("click", async function () {
     }
   } catch (err) {
     document.querySelectorAll(".label-up")[1].innerHTML = "Error";
-    
-    spanErr.classList.add('error');
+
+    spanErr.classList.add("error");
     console.log(err);
   } finally {
     setTimeout(() => {
@@ -192,9 +207,10 @@ function ensureHTTPS(url) {
 function isValidURL(url) {
   // Regular expression pattern to validate URLs
   const urlPattern =
-    /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+\.[a-z0-9]+(?:\/.*)?$/i;
-
-  return urlPattern.test(url);
+    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+  const urlPattern2 =
+    /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/; //without http or https
+  return urlPattern.test(url) || urlPattern2.test(url);
 }
 
 function updatelocalStorage() {
